@@ -1,7 +1,10 @@
 import requests
 import time
-from tinydb import TinyDB
 from datetime import datetime
+from dotenv import load_dotenv
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
 
 def extract_dados_bitcoin():
     url = 'https://api.coinbase.com/v2/prices/spot'
@@ -28,16 +31,14 @@ def transform_dados_bitcoin(data):
 
 
 
-def load_dados_tinydb(data, db_name='bitcoin.json'):
-    db = TinyDB(db_name)
-    db.insert(data)
-    print('Dados inseridos com sucesso!')
+def load_dados_pgsql(data):
+    pass
+    
 
 
 if __name__ == '__main__':
     while True:
         dados = extract_dados_bitcoin()
         dados_transformados = transform_dados_bitcoin(dados)
-        load_dados_tinydb(dados_transformados)
         print(dados_transformados)
         time.sleep(5)
