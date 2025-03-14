@@ -4,13 +4,17 @@ services:
     container_name: etl_postgres
     restart: always
     environment:
-      POSTGRES_USER: "POSTGRES_USER"
-      POSTGRES_PASSWORD: "POSTGRES_PASSWORD"
-      POSTGRES_DB: "POSTGRES_DB"
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
+
 
   # etl:
   #   build:
@@ -34,5 +38,5 @@ services:
   #     - "8501:8501"
   #   command: ["streamlit", "run", "app/dashboard.py"]
 
-volumes:
-  postgres_data:
+# volumes:
+#   postgres_data:
