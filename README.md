@@ -13,17 +13,10 @@ Criar um pipeline de ETL simples e modular que:
 ```
 pipeline_api/
 │-- etl/
-│   ├── extract.py  # Função para extração de dados
-│   ├── transform.py  # Função para transformação de dados
-│   ├── load.py  # Função para carga dos dados no PostgreSQL
-│   ├── config.py  # Configuração e carregamento de variáveis de ambiente
+│   ├── etl.py  
+│   ├── models.py  
 │-- app/
-│   ├── dashboard.py  # Aplicação Streamlit para visualização
-│-- docker/
-│   ├── docker-compose.yml  # Configuração do Docker Compose
-│   ├── Dockerfile.etl  # Dockerfile para o pipeline ETL
-│   ├── Dockerfile.app  # Dockerfile para o Streamlit
-│-- main.py  # Script principal para rodar o pipeline
+│   ├── app.py  
 │-- requirements.txt  # Dependências do projeto
 │-- .env.example  # Exemplo de configuração de variáveis de ambiente
 │-- .env  # Arquivo de variáveis de ambiente (não deve ser versionado)
@@ -35,9 +28,8 @@ pipeline_api/
 - Python 3.x
 - `requests` para extração de dados
 - `pandas` para transformação
-- PostgreSQL rodando em um contêiner Docker
-- Streamlit para visualização dos dados
-- Docker e Docker Compose para orquestração dos serviços
+- `PostgreSQL` rodando em uma VPS
+- `Streamlit` para visualização dos dados
 - `python-dotenv` para gerenciamento de variáveis de ambiente
 
 ## 🚀 Como Executar
@@ -52,9 +44,6 @@ pipeline_api/
      cp .env.example .env
      ```
    - Edite o `.env` e ajuste as configurações do PostgreSQL e da API.
-3. Inicie os serviços com Docker Compose:
-   ```bash
-   docker-compose up -d
    ```
 4. Acesse o Streamlit para visualização:
    ```bash
