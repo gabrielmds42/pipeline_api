@@ -44,8 +44,7 @@ pipeline_api/
      cp .env.example .env
      ```
    - Edite o `.env` e ajuste as configurações do PostgreSQL e da API.
-   ```
-4. Acesse o Streamlit para visualização:
+3. Acesse o Streamlit para visualização:
    ```bash
    http://localhost:8501
    ```
