@@ -81,4 +81,4 @@ if __name__ == '__main__':
     while True:
         pipeline()
         print('Dados inseridos com sucesso')
-        time.sleep(60)
+        time.sleep(600)
