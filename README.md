@@ -1,12 +1,14 @@
 # Pipeline API
 
-Este repositório contém um pipeline de engenharia de dados que extrai, transforma e carrega (ETL) dados em um banco de dados PostgreSQL, utilizando Python e Pandas para processamento, e um dashboard interativo criado com Streamlit para visualização.
+Este repositório contém um pipeline de engenharia de dados que extrai, transforma e carrega (ETL) dados do preço do Bitcoin em um banco de dados PostgreSQL. O projeto utiliza Python para processamento de dados e um dashboard interativo criado com Streamlit para visualização.
 
 ## Tecnologias Utilizadas
 
 - **Python**: Linguagem principal para desenvolvimento.
 - **Pandas**: Processamento e manipulação de dados.
 - **PostgreSQL**: Armazenamento dos dados transformados.
+- **SQLAlchemy**: ORM para interação com o banco de dados.
+- **Requests**: Biblioteca para fazer requisições HTTP e coletar dados da API.
 - **Streamlit**: Criação do dashboard interativo.
 - **Docker (Opcional)**: Para facilitar a implantação do ambiente.
 
@@ -52,17 +54,21 @@ pipeline_api/
 
    - Copie o arquivo `.env.example` para `.env` e preencha com suas credenciais e configurações.
 
-5. Execute o pipeline ETL:
+5. Execute o pipeline ETL para coletar dados do Bitcoin:
 
    ```bash
    python etl/etl.py
    ```
 
-6. Inicie o dashboard Streamlit:
+   O script extrai os dados da API da Coinbase, transforma e carrega no banco de dados PostgreSQL a cada 10 minutos.
+
+6. Inicie o dashboard Streamlit para visualizar os dados:
 
    ```bash
    streamlit run app/app.py
    ```
+
+   O dashboard permite acompanhar a evolução do preço do Bitcoin, ver estatísticas e monitorar execuções do pipeline.
 
 ## Docker (Opcional)
 
