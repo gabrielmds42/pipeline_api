@@ -1,22 +1,24 @@
-# ETL Pipeline com Python, Requests, PostgreSQL e Streamlit
+# Pipeline API
 
-Este projeto implementa um pipeline de ETL (Extração, Transformação e Carga) utilizando Python e a biblioteca `requests` para obtenção de dados via API. O banco de dados utilizado é o PostgreSQL, rodando em um contêiner Docker, e os dados podem ser visualizados via Streamlit, também rodando em Docker.
+Este repositório contém um pipeline de engenharia de dados que extrai, transforma e carrega (ETL) dados em um banco de dados PostgreSQL, utilizando Python e Pandas para processamento, e um dashboard interativo criado com Streamlit para visualização.
 
-## 📌 Objetivo
-Criar um pipeline de ETL simples e modular que:
-1. **Extrai** dados de uma API utilizando `requests`.
-2. **Transforma** os dados para um formato estruturado.
-3. **Carrega** os dados em um banco de dados PostgreSQL.
-4. **Visualiza** os dados através de uma aplicação Streamlit.
+## Tecnologias Utilizadas
 
-## 📂 Estrutura do Projeto
+- **Python**: Linguagem principal para desenvolvimento.
+- **Pandas**: Processamento e manipulação de dados.
+- **PostgreSQL**: Armazenamento dos dados transformados.
+- **Streamlit**: Criação do dashboard interativo.
+- **Docker (Opcional)**: Para facilitar a implantação do ambiente.
+
+## Estrutura do Projeto
+
 ```
 pipeline_api/
 │-- etl/
-│   ├── etl.py  
-│   ├── models.py  
+│   ├── etl.py  # Script principal do pipeline ETL
+│   ├── models.py  # Definição dos modelos de dados
 │-- app/
-│   ├── app.py  
+│   ├── app.py  # Código do dashboard em Streamlit
 │-- requirements.txt  # Dependências do projeto
 │-- .env.example  # Exemplo de configuração de variáveis de ambiente
 │-- .env  # Arquivo de variáveis de ambiente (não deve ser versionado)
@@ -24,39 +26,60 @@ pipeline_api/
 │-- README.md  # Documentação do projeto
 ```
 
-## 🛠 Tecnologias Utilizadas
-- Python 3.x
-- `requests` para extração de dados
-- `pandas` para transformação
-- `PostgreSQL` rodando em uma VPS
-- `Streamlit` para visualização dos dados
-- `python-dotenv` para gerenciamento de variáveis de ambiente
+## Instalação e Uso
 
-## 🚀 Como Executar
 1. Clone este repositório:
+
    ```bash
-   git clone git@github.com:gabrielmds42/pipeline_api.git
+   git clone https://github.com/gabrielmds42/pipeline_api.git
    cd pipeline_api
    ```
-2. Configure as variáveis de ambiente:
-   - Copie o arquivo de exemplo:
-     ```bash
-     cp .env.example .env
-     ```
-   - Edite o `.env` e ajuste as configurações do PostgreSQL e da API.
-3. Acesse o Streamlit para visualização:
+
+2. Crie e ative um ambiente virtual:
+
    ```bash
-   http://localhost:8501
+   python -m venv venv
+   source venv/bin/activate  # No Windows use 'venv\Scripts\activate'
    ```
 
-## ⚙️ Configuração
-Todas as configurações sensíveis, como credenciais e URLs de API, devem ser definidas no arquivo `.env`. Nunca compartilhe este arquivo publicamente. O `.gitignore` já está configurado para evitar a versão do `.env`.
+3. Instale as dependências:
 
-## 📌 Próximos Passos
-- Melhorar a gestão de erros na extração
-- Adicionar logs para monitoramento do pipeline
-- Implementar autenticação na API e na interface Streamlit
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 📄 Licença
-Este projeto está licenciado sob a [MIT License](LICENSE).
+4. Configure as variáveis de ambiente:
+
+   - Copie o arquivo `.env.example` para `.env` e preencha com suas credenciais e configurações.
+
+5. Execute o pipeline ETL:
+
+   ```bash
+   python etl/etl.py
+   ```
+
+6. Inicie o dashboard Streamlit:
+
+   ```bash
+   streamlit run app/app.py
+   ```
+
+## Docker (Opcional)
+
+Se preferir rodar o projeto em contêineres Docker:
+
+```bash
+docker-compose up --build
+```
+
+## Contribuição
+
+Fique à vontade para abrir issues e enviar pull requests!
+
+## Autor
+
+Desenvolvido por **Gabriel Magalhães de Souza**. 
+
+- [LinkedIn](https://www.linkedin.com/in/gabriel-magalh%C3%A3es-de-souza/)
+- [GitHub](https://github.com/gabrielmds42)
 
